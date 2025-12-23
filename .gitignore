@@ -7,8 +7,4 @@ cmake-build-release/
 *.so
 *.dll
 
-.idea/
 .vscode/
-
-.DS_Store
-Thumbs.db
