@@ -11,7 +11,6 @@ int main()
         std::cout << "Choose difficulty (easy, normal, hard): ";
         std::cin >> difficulty;
         game.setDifficulty(difficulty);
-
         game.run();
     }
     catch (const std::exception &e)

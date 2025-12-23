@@ -83,7 +83,7 @@ void GameController::render()
         gameOverText.setString("You lose");
         gameOverText.setCharacterSize(50);
         gameOverText.setFillColor(sf::Color::Red);
-        gameOverText.setPosition(250, 250);
+        gameOverText.setPosition(300, 250);
         window.draw(gameOverText);
     }
     else
@@ -101,15 +101,19 @@ void GameController::handleInput(sf::Keyboard::Key key)
     switch (key)
     {
         case sf::Keyboard::W:
+        case sf::Keyboard::Up:        
             snake.setDirection(sf::Keyboard::Up);
             break;
         case sf::Keyboard::S:
+        case sf::Keyboard::Down:
             snake.setDirection(sf::Keyboard::Down);
             break;
         case sf::Keyboard::A:
+        case sf::Keyboard::Left:
             snake.setDirection(sf::Keyboard::Left);
             break;
         case sf::Keyboard::D:
+        case sf::Keyboard::Right:
             snake.setDirection(sf::Keyboard::Right);
             break;
         default:
