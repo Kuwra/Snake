@@ -10,13 +10,13 @@ class GameController
 public:
     GameController();
     void run();
-    void setDifficulty(const std::string &difficulty); // Dodane do ustawiania poziomu trudności
 
 private:
     void processEvents();
     void update();
     void render();
     void handleInput(sf::Keyboard::Key key);
+    void showMenu();
 
     sf::RenderWindow window;
     Snake snake;
@@ -25,7 +25,8 @@ private:
     sf::Font font;
     sf::Text scoreText;
     bool gameOver;
-    float speed; // Dodane do ustawiania prędkości gry
+    float speed; 
 };
+
 
 #endif // GAMECONTROLLER_H

@@ -6,11 +6,6 @@ int main()
     try
     {
         GameController game;
-
-        std::string difficulty;
-        std::cout << "Choose difficulty (easy, normal, hard): ";
-        std::cin >> difficulty;
-        game.setDifficulty(difficulty);
         game.run();
     }
     catch (const std::exception &e)
@@ -18,6 +13,5 @@ int main()
         std::cerr << e.what() << std::endl;
         return EXIT_FAILURE;
     }
-    
     return EXIT_SUCCESS;
 }
