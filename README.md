@@ -6,10 +6,10 @@ Wymaga:
 - SFML 2.6
 
 Build:
-mkdir build && cd build
-cmake ..
-cmake --build . --config Release
+- mkdir build && cd build
+- cmake ..
+- cmake --build . --config Release
 
 Uruchomienie:
-./Snake.exe # Windows
-./Snake # Linux/macOS
+- ./Snake.exe # Windows
+- ./Snake # Linux/macOS
