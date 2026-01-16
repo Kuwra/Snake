@@ -85,22 +85,38 @@ void GameController::showMenu()
 void GameController::run()
 {
     showMenu();
+    resetGame();               
 
     sf::Clock clock;
     while (window.isOpen())
     {
-        processEvents();
         
         if (!gameOver)
         {
+                    processEvents();
+
             if (clock.getElapsedTime().asSeconds() > speed)
             {
                 update();
                 clock.restart();
             }
-        }
-        
         render();
+        }
+        else
+        {
+            const bool restart = showGameOverScreen();
+            if (!window.isOpen()) return;
+ 
+            if (restart)
+            {
+                resetGame();    
+                clock.restart();
+            }
+            else
+            {
+                window.close();
+            }
+        }
     }
 }
 
@@ -179,4 +195,73 @@ void GameController::handleInput(sf::Keyboard::Key key)
         default:
             break;
     }
+}
+bool GameController::showGameOverScreen()
+{
+    sf::Text title, restartText, closeText;
+
+    title.setFont(font);
+    title.setString("Game Over");
+    title.setCharacterSize(50);
+    title.setFillColor(sf::Color::Red);
+    title.setPosition(250.f, 180.f);
+
+    restartText.setFont(font);
+    restartText.setString("Restart");
+    restartText.setCharacterSize(40);
+    restartText.setFillColor(sf::Color::Green);
+    restartText.setPosition(320.f, 290.f);
+
+    closeText.setFont(font);
+    closeText.setString("Close Game");
+    closeText.setCharacterSize(40);
+    closeText.setFillColor(sf::Color::Blue);
+    closeText.setPosition(290.f, 370.f);
+
+    bool waiting = true;
+
+    while (window.isOpen() && waiting)
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+                return false;
+            }
+
+            if (event.type == sf::Event::MouseButtonPressed &&
+                event.mouseButton.button == sf::Mouse::Left)
+            {
+                sf::Vector2f mousePos((float)event.mouseButton.x, (float)event.mouseButton.y);
+
+                if (restartText.getGlobalBounds().contains(mousePos))
+                    return true;
+
+                if (closeText.getGlobalBounds().contains(mousePos))
+                    return false;
+            }
+        }
+
+        window.clear(sf::Color::White);
+        window.draw(title);
+        window.draw(restartText);
+        window.draw(closeText);
+        window.display();
+    }
+
+    return false;
+}
+
+void GameController::resetGame()
+{
+
+    gameOver = false;        
+    score = 0;
+
+    snake.reset();           
+    food.spawn();            
+
+    scoreText.setString("Score: 0"); 
 }

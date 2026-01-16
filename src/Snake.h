@@ -10,6 +10,8 @@ public:
     Snake();
     void move();
     void grow();
+    void reset();
+
     bool checkCollision();
     bool checkWallCollision(sf::Vector2u windowSize);
     void setDirection(sf::Keyboard::Key key);
@@ -38,6 +40,7 @@ private:
     sf::Texture tailTextureRight;
 
     void updateTextures();
+
 };
 
 #endif // SNAKE_H

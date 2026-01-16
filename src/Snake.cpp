@@ -173,3 +173,15 @@ void Snake::updateTextures()
             body[0].setTexture(&headTextureUp);
     }
 }
+void Snake::reset()
+{
+    body.clear();
+
+    sf::RectangleShape segment(sf::Vector2f(20.0f, 20.0f));
+    segment.setTexture(&headTextureRight);
+    segment.setPosition(400, 300);
+    body.push_back(segment);
+
+    direction = sf::Vector2f(20.0f, 0.0f);
+    updateTextures();
+}

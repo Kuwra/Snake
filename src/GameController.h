@@ -4,7 +4,6 @@
 #include <SFML/Graphics.hpp>
 #include "Snake.h"
 #include "Food.h"
-
 class GameController
 {
 public:
@@ -17,6 +16,8 @@ private:
     void render();
     void handleInput(sf::Keyboard::Key key);
     void showMenu();
+    bool showGameOverScreen();
+    void resetGame();
 
     sf::RenderWindow window;
     Snake snake;
