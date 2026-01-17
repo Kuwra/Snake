@@ -32,7 +32,7 @@ void GameController::showMenu()
     normalText.setString("Normal");
     normalText.setCharacterSize(40);
     normalText.setFillColor(sf::Color::Blue);
-    normalText.setPosition(320, 280);
+    normalText.setPosition(330, 280);
 
     hardText.setFont(font);
     hardText.setString("Hard");
@@ -151,24 +151,9 @@ void GameController::update()
 void GameController::render()
 {
     window.clear(sf::Color::White);
-    
-    if (gameOver)
-    {
-        sf::Text gameOverText;
-        gameOverText.setFont(font);
-        gameOverText.setString("You lose");
-        gameOverText.setCharacterSize(50);
-        gameOverText.setFillColor(sf::Color::Red);
-        gameOverText.setPosition(250, 250);
-        window.draw(gameOverText);
-    }
-    else
-    {
-        snake.draw(window);
-        food.draw(window);
-        window.draw(scoreText);
-    }
-    
+    snake.draw(window);
+    food.draw(window);
+    window.draw(scoreText);
     window.display();
 }
 
@@ -204,13 +189,13 @@ bool GameController::showGameOverScreen()
     title.setString("Game Over");
     title.setCharacterSize(50);
     title.setFillColor(sf::Color::Red);
-    title.setPosition(250.f, 180.f);
+    title.setPosition(270.f, 180.f);
 
     restartText.setFont(font);
     restartText.setString("Restart");
     restartText.setCharacterSize(40);
     restartText.setFillColor(sf::Color::Green);
-    restartText.setPosition(320.f, 290.f);
+    restartText.setPosition(330.f, 290.f);
 
     closeText.setFont(font);
     closeText.setString("Close Game");
