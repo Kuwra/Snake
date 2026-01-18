@@ -89,7 +89,22 @@ void Snake::setDirection(sf::Keyboard::Key key)
             break;
     }
 }
+bool Snake::canChangeDirection(sf::Keyboard::Key key) const
+{
+    switch (key)
+    {
+        case sf::Keyboard::Up:
+        case sf::Keyboard::Down:
+            return direction.y == 0;
 
+        case sf::Keyboard::Left:
+        case sf::Keyboard::Right:
+            return direction.x == 0;
+
+        default:
+            return false;
+    }
+}
 sf::Vector2f Snake::getPosition() const
 {
     return body[0].getPosition();

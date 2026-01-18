@@ -1,3 +1,29 @@
+=================================================
+
+Snake game written in C++ using the SFML library.
+
+Wymaga:
+- CMake >= 3.11
+- C++ compiler 
+- SFML 2.6
+
+Build:
+- mkdir build && cd build
+- cmake ..
+- cmake --build . --config Release
+
+Uruchomienie:
+- ./Snake.exe # Windows
+- ./Snake # Linux/macOS
+
+Sterowanie:
+- W / ↑ ; – move up
+- S / ↓ ; – move down
+- A / ← ; – move left
+- D / → ; – move right
+
+=================================================
+
 Gra Snake napisana w C++ z biblioteką SFML.
 
 Wymaga:
@@ -19,3 +45,5 @@ Sterowanie:
 - S / ↓ ; – ruch w dół
 - A / ← ; – ruch w lewo
 - D / → ; – ruch w prawo
+
+=================================================

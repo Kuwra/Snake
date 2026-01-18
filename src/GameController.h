@@ -18,7 +18,9 @@ private:
     void showMenu();
     bool showGameOverScreen();
     void resetGame();
-
+    
+    sf::Keyboard::Key pendingDirection = sf::Keyboard::Right; 
+    bool directionQueued = false;                             
     sf::RenderWindow window;
     Snake snake;
     Food food;

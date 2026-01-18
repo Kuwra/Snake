@@ -17,6 +17,7 @@ public:
     void setDirection(sf::Keyboard::Key key);
     sf::Vector2f getPosition() const;
     void draw(sf::RenderWindow &window);
+    bool canChangeDirection(sf::Keyboard::Key key) const;
 
 private:
     std::deque<sf::RectangleShape> body;

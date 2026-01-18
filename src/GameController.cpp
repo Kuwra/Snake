@@ -134,8 +134,16 @@ void GameController::processEvents()
 
 void GameController::update()
 {
+
+
+    if (directionQueued)
+    {
+        snake.setDirection(pendingDirection); 
+        directionQueued = false;              
+    }
+
     snake.move();
-    
+
     if (snake.checkCollision() || snake.checkWallCollision(window.getSize()))
         gameOver = true;
 
@@ -159,28 +167,50 @@ void GameController::render()
 
 void GameController::handleInput(sf::Keyboard::Key key)
 {
+    if (directionQueued)
+        return;
+
+    sf::Keyboard::Key desired;
+    bool isDirectionKey = true;
+
     switch (key)
     {
         case sf::Keyboard::W:
         case sf::Keyboard::Up:
-            snake.setDirection(sf::Keyboard::Up);
+            desired = sf::Keyboard::Up;
             break;
+
         case sf::Keyboard::S:
         case sf::Keyboard::Down:
-            snake.setDirection(sf::Keyboard::Down);
+            desired = sf::Keyboard::Down;
             break;
+
         case sf::Keyboard::A:
         case sf::Keyboard::Left:
-            snake.setDirection(sf::Keyboard::Left);
+            desired = sf::Keyboard::Left;
             break;
+
         case sf::Keyboard::D:
         case sf::Keyboard::Right:
-            snake.setDirection(sf::Keyboard::Right);
+            desired = sf::Keyboard::Right;
             break;
+
         default:
+            isDirectionKey = false;
             break;
     }
+
+    if (!isDirectionKey)
+        return;
+
+
+    if (!snake.canChangeDirection(desired))
+        return;
+
+    pendingDirection = desired;
+    directionQueued = true;
 }
+
 bool GameController::showGameOverScreen()
 {
     sf::Text title, restartText, closeText;
